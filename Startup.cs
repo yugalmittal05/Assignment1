@@ -43,7 +43,7 @@ namespace Assignment1
       app.UseStaticFiles();
       app.UseRouting();
       app.UseMvc(route =>
-        route.MapRoute("default", "{controller=home}/{action=index}/{deptid?}/{id?}"));
+        route.MapRoute("default", "{controller=home}/{action=index}/{id?}"));
       /*app.UseEndpoints(endpoints =>
       {
         endpoints.MapControllerRoute(
