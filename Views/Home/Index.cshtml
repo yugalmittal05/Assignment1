@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Assignment1.Models.Department>
+@{
+  ViewBag.Title = "Home Page";
+}
+
+@{
+  <div id="listView" class="table container d-flex justify-content-center" >
+    <table style="width:500px" >
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Department Id</th>
+        <th scope="col">Name</th>
+      </tr>
+      @{
+        var count = 0;
+        foreach (var Model in Model)
+        {
+          count++;
+          <tbody>
+            <tr>
+              <td>@count</td>
+              <td>@Model.Id</td>
+              <td><a asp-controller="home" asp-action="Details" asp-route-id="@Model.Id">@Model.DepartmentName</a></td>
+            </tr>
+          </tbody>
+        }
+      }
+    </table>
+  </div>
+}

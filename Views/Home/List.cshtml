@@ -1,0 +1,25 @@
+﻿@model Assignment1.ViewModels.EmployeeDetailsViewModel
+@{ 
+  ViewBag.Title = "Employee Details";
+}
+@{
+    <div class="row justify-content-center m-3">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-header">
+            <h1>Employee Id : @Model.Id</h1>
+          </div>
+
+          <div class="card-body text-center">
+            <h4>Employee Name : @Model.Name</h4>
+            <h4>Employee City : @Model.City</h4>
+            <h4>Gender : @Model.Gender</h4>
+            <h4>Department : @Model.DepartmentName</h4>
+          </div>
+          <a asp-action="details"asp-route-id="@Model.DepartmentId" class="btn btn-info">Go To Employee List</a>
+        </div>
+      </div>
+    </div>
+  }
+
+

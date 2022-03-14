@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Assignment1.Models.Employees>
+@{
+  ViewBag.Title = "Employees";
+}
+
+@{
+  <div id="listView" class="table align-content-lg-stretch">
+    <table style="width: 100%">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Name</th>
+      </tr>
+      @{
+        var count = 0;
+        foreach (var Model in Model)
+        {
+          count++;
+          <tbody>
+            <tr>
+              <td>@count</td>
+              <td>@Model.Id</td>
+              <td>
+                <a asp-controller="home" asp-action="List" 
+                   asp-route-id="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>
+                </td>
+              </tr>
+            </tbody>
+          }
+      }
+    </table>
+    <br />
+    <br />
+    <a asp-action="index" class="btn btn-info">Go To Department List</a>
+  </div>
+}
