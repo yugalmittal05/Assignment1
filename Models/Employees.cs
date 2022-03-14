@@ -14,7 +14,7 @@ namespace Assignment1.Models
     public string Gender { get; set; }
     public string City { get; set; }
     [ForeignKey("Department")]
-    public int? DepartmentId { get; set; }
+    public int DepartmentId { get; set; }
     
     
   }

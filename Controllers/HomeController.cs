@@ -23,17 +23,17 @@ namespace Assignment1.Controllers
       return View(model);
     }
 
-    [HttpGet("details/{id?}")]
-    public IActionResult Details(int id)
+    [HttpGet("details/{deptId?}")]
+    public IActionResult Details(int deptId)
     {
-      var model = _employeeRepository.GetEmployeesByDeptartmentId(id);
+      var model = _employeeRepository.GetEmployeesByDeptartmentId(deptId);
       return View(model);
     }
 
-    [HttpGet("list/{id?}")]
-    public IActionResult List(int id)
+    [HttpGet("list/{deptId?}/{empId?}")]
+    public IActionResult List(int deptId,int empId)
     {
-      EmployeeDetailsViewModel employee = _employeeRepository.GetEmployeeFullDetails(id);
+      EmployeeDetailsViewModel employee = _employeeRepository.GetEmployeeFullDetails(empId);
       
       return View(employee);
     }

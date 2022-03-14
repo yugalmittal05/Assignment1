@@ -16,15 +16,19 @@
         foreach (var Model in Model)
         {
           count++;
+          
           <tbody>
-            <tr>
-              <td>@count</td>
-              <td>@Model.Id</td>
-              <td>
-                <a asp-action="List" asp-controller="home" 
-                    asp-route-id="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>
-                </td>
-              </tr>
+                  <tr>
+                    <td hidden>@Model.DepartmentId</td>
+                    <td>@count</td>
+                    <td>@Model.Id</td>
+                    <td>
+                      <a asp-action="List" asp-controller="home" asp-route-deptId="@Model.DepartmentId"
+                         asp-route-empId="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>
+                    @*  <a asp-action="List" asp-controller="home" asp-route-deptId="@Model.DepartmentId"
+                         asp-route-empId="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>*@
+                      </td>
+                    </tr>
             </tbody>
           }
       }

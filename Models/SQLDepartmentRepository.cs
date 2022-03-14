@@ -54,7 +54,8 @@ namespace Assignment1.Models
         .Select(emp => new Employees
         {
           Id = emp.Id,
-          Name = emp.Name
+          Name = emp.Name,
+          DepartmentId = emp.DepartmentId
         }).ToList();
       return employee;
     }
