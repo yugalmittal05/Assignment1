@@ -1,40 +1,46 @@
 ﻿@model IEnumerable<Assignment1.Models.Employees>
 @{
-  ViewBag.Title = "Employees";
+    ViewBag.Title = "Employees";
 }
 
 @{
-  <div id="listView" class="table align-content-lg-stretch">
-    <table style="width: 100%">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Employee Id</th>
-        <th scope="col">Name</th>
-      </tr>
-      @{
-        var count = 0;
-        foreach (var Model in Model)
-        {
-          count++;
-          
-          <tbody>
-                  <tr>
-                    <td hidden>@Model.DepartmentId</td>
-                    <td>@count</td>
-                    <td>@Model.Id</td>
-                    <td>
-                      <a asp-action="List" asp-controller="home" asp-route-deptId="@Model.DepartmentId"
-                         asp-route-empId="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>
-                    @*  <a asp-action="List" asp-controller="home" asp-route-deptId="@Model.DepartmentId"
-                         asp-route-empId="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>*@
-                      </td>
-                    </tr>
+    <div id="listView" class="card" style="max-width: fit-content;">
+        <table class="table align-content">
+            <thead>
+                <tr>
+                    <th >#</th>
+                    <th >Employee Id</th>
+                    <th >Name</th>
+                    <th >Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var count = 0;
+                    foreach (var Model in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td hidden>@Model.DepartmentId</td>
+                            <td>@count</td>
+                            <td>@Model.Id</td>
+                            <td>
+                                <a asp-action="List" asp-controller="home" asp-route-deptId="@Model.DepartmentId"
+                                   asp-route-empId="@Model.Id" class=" btn btn-outline-info">@Model.Name</a>
+                            </td>
+                            <td>
+                                <button onclick="getResponce(@Model.DepartmentId,@Model.Id)" class=" btn btn-warning">Delete</button>
+                            </td>
+
+                        </tr>
+                    }
+                }
             </tbody>
-          }
-      }
-    </table>
-    <br />
-    <br />
-    <a asp-action="index" class="btn btn-info">Go To Department List</a>
-  </div>
+        </table>
+       
+        <div class="text-center">
+            <a asp-action="index" class="btn btn-info">Go To Department List</a>
+            <a class="btn btn-info" asp-controller="admin" asp-action="create" asp-route-deptId="@ViewBag.deptId">Create Employee</a>
+        </div>
+        </div>
 }

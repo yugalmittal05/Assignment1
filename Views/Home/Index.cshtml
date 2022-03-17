@@ -1,30 +1,41 @@
 ﻿@model IEnumerable<Assignment1.Models.Department>
 @{
-  ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 
 @{
-  <div id="listView" class="table container d-flex justify-content-center" >
-    <table style="width:500px" >
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Department Id</th>
-        <th scope="col">Name</th>
-      </tr>
-      @{
-        var count = 0;
-        foreach (var Model in Model)
-        {
-          count++;
-          <tbody>
-            <tr>
-              <td>@count</td>
-              <td>@Model.Id</td>
-              <td><a asp-controller="home" asp-action="Details" asp-route-deptId="@Model.Id">@Model.DepartmentName</a></td>
-            </tr>
-          </tbody>
-        }
-      }
-    </table>
-  </div>
+    <div id="listView" class="table container d-flex justify-content-center">
+        <table style="width:500px; table-layout:auto; border:groove ">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Department Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var count = 0;
+                    foreach (var Model in Model)
+                    {
+                        count++;
+                        <tr>
+                            <td>@count</td>
+                            <td>@Model.Id</td>
+                            <td><a asp-controller="home" asp-action="Details" asp-route-deptId="@Model.Id">@Model.DepartmentName</a></td>
+                            <td><a asp-controller="admin" asp-action="deleteDept" asp-route-deptId="@Model.Id" class="btn btn-danger">Delete </a></td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    @*<a class="btn btn-info" asp-controller="admin" asp-action="createDept">Create Department</a>*@
+                    <td colspan="4">
+                        <a asp-controller="admin" asp-action="createDept" class="btn btn-info" style="width: 100%;">Create Department</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
 }
